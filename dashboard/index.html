@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel = "stylesheet" href = "main.css">
+  <script src="main.js"></script>
+</head>
+<body>
+ <div class = "container" style="background-color: #131010;">
+    <!--<div id= "main">
+      <h2>Profile</h2>
+      
+    </div>
+    </div><img size=fullscreen src="//appatts.github.io/logo.png">-->
+  </div>
+ 
+ <div style="background-color: #131010; position: fixed; width: 62%; height: 100%; left: 20%; top: 0%; color: white;">
+     <div id="topbar" >
+     <a href="//appatts.github.io"><img src="logo.png" style="width: 10%; margin-bottom: -3%; margin-left: -2%;"><b style="color: white; margin-right: 3%; font-size: 18px;"><i>Appatts</i></b></img></a>
+     <button id="topbar" style="width: 24%;" onclick="showFeed()">People</button>
+     <button id="topbar" style="width: 24%;" onclick="showProjects()">Buisness & Projects</button>
+     <button id="topbar" style="width: 24%;" onclick="showProfile()">My Profile</button>
+     </div>
+     
+     <div class="Feed" id="Feed" style="color: white; display:true;">
+         <!-- 1 Contentfield per selected User -->
+         <div id="contentfield">
+             <br>
+             <h2>Firstname L. (iOS App Developer)</h2>
+             <br>
+             <h3>My Skills:</h3>
+             <p>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla</p>
+             <br>
+             <button id="decline"><h2 style="text-align: center; margin-bottom: -5%; margin-top: -4%;">Decline</h2></button><button id="hirebutton"><h2 style="text-align: center; margin-bottom: -5%; margin-top: -4%;">Hire</h2></button>
+             
+         </div>
+     </div>
+     
+     <div class="Projects" id="Projects" style="color: white; display:none">
+         <div id="contentfield">
+             <br>
+             <h2>Appatts (Buisness)</h2>
+             <br>
+             <h3>What we are looking for:</h3>
+             <p>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla</p>
+             <br>
+             <button id="decline"><h2 style="text-align: center; margin-bottom: -5%; margin-top: -4%;">Ignore</h2></button><button id="hirebutton"><h2 style="text-align: center; margin-bottom: -5%; margin-top: -4%;">Apply</h2></button>
+             
+         </div>
+         
+     </div>
+     
+     <div class="Profile" id="Profile" style="color: white; display:none">
+         <br><br><br>
+         <h2>Your Public Profile</h2>
+         <br><br>
+         <h3>Name:<br> <input type=text style="background-color: #333; width: 97%; font-size: 20px; color: white; font-family: 'Courier';"></h3>
+         <h3>Profession:<br> <input type="text" style="background-color: #333; width: 97%; font-size: 20px; color: white; font-family: 'Courier';"></h3>
+         <h3>Skills:<br> <input type=text style="background-color: #333; width: 97%; font-size: 20px; color: white; font-family: 'Courier';"></h3>
+         <br>
+         
+         <div id="contentfield">
+             <br>
+         <h3 style="text-align: center;">Buisness (0/2)</h3>
+         <p>You are in no buisness yet!</p>
+         <h3><button id="hirebutton" style="margin-right: 2%; margin-left: -0%; font-family: 'Courier'; font-size: 20px; ">Get a Job</button>or<button id="hirebutton" style="font-family: 'Courier'; font-size: 20px; ">Build your Buisness</button></h3>
+         </div>
+         
+         <br><br>
+         <div id="contentfield">
+             <br>
+         <h3 style="text-align: center;">Private Projects (1/5)</h3>
+         <div id="project">
+         <p>Personal-Space</p> <a href="/project?pn=Personal-Space" style="text-decoration: none;"
+     ><h3 id="manage">manage</h3></a>
+         </div>
+         <h3><button id="hirebutton" style="margin-right: 2%; margin-left: -0%; font-family: 'Courier'; font-size: 20px; ">Join a Project</button>or<button id="hirebutton" style="font-family: 'Courier'; font-size: 20px; ">Build one</button></h3>
+         
+        </div>
+         
+     </div>
+     
+ </div>
+ <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js"></script>
+
+ <!-- Your Firebase configuration goes here -->
+ <script>
+   const firebaseConfig = {
+       apiKey: "AIzaSyD4dxWSJrRxGh0retEL5OFp-Lau3TVIdEk",
+       authDomain: "appatts-v1.firebaseapp.com",
+       projectId: "appatts-v1",
+       storageBucket: "appatts-v1.appspot.com",
+       messagingSenderId: "1005228927278",
+       appId: "1:1005228927278:web:d680a65f9e8823da7cb2bf",
+       measurementId: "G-89PR2RWTHE"
+   };
+
+   firebase.initializeApp(firebaseConfig);
+
+   firebase.auth().onAuthStateChanged((user) => {
+     if (user) {
+       // User is signed in, allow access to dashboard
+     } else {
+       // No user is signed in, redirect to login page after a 100ms delay
+       setTimeout(() => {
+         window.location.replace('/login');
+       }, 100);
+     }
+   });
+ </script>
+ 
+</body>
+</html>
