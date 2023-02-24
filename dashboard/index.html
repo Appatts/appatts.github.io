@@ -20,6 +20,9 @@
        appId: "1:1005228927278:web:d680a65f9e8823da7cb2bf",
        measurementId: "G-89PR2RWTHE"
    };
+   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+   import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
 
    firebase.initializeApp(firebaseConfig);
 
