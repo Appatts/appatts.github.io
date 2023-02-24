@@ -4,6 +4,34 @@
   <title>Login</title>
   <link rel = "stylesheet" href = "main.css">
   <script src="main.js"></script>
+  
+  
+   <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js"></script>
+
+ <!-- Your Firebase configuration goes here -->
+ <script>
+   const firebaseConfig = {
+       apiKey: "AIzaSyD4dxWSJrRxGh0retEL5OFp-Lau3TVIdEk",
+       authDomain: "appatts-v1.firebaseapp.com",
+       projectId: "appatts-v1",
+       storageBucket: "appatts-v1.appspot.com",
+       messagingSenderId: "1005228927278",
+       appId: "1:1005228927278:web:d680a65f9e8823da7cb2bf",
+       measurementId: "G-89PR2RWTHE"
+   };
+
+   firebase.initializeApp(firebaseConfig);
+
+   firebase.auth().onAuthStateChanged((user) => {
+     if (user) {
+       // User is signed in, allow access to dashboard
+     } else {
+       // No user is signed in, redirect to login page
+       window.location.replace('/login');
+     }
+   });
+ </script>
 </head>
 <body>
  <div class = "container" style="background-color: #131010;">
@@ -81,31 +109,7 @@
      </div>
      
  </div>
- <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
- <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js"></script>
 
- <!-- Your Firebase configuration goes here -->
- <script>
-   const firebaseConfig = {
-       apiKey: "AIzaSyD4dxWSJrRxGh0retEL5OFp-Lau3TVIdEk",
-       authDomain: "appatts-v1.firebaseapp.com",
-       projectId: "appatts-v1",
-       storageBucket: "appatts-v1.appspot.com",
-       messagingSenderId: "1005228927278",
-       appId: "1:1005228927278:web:d680a65f9e8823da7cb2bf",
-       measurementId: "G-89PR2RWTHE"
-   };
-
-   firebase.initializeApp(firebaseConfig);
-
-   firebase.auth().onAuthStateChanged((user) => {
-     if (user) {
-       // User is signed in, allow access to dashboard
-     } else {
-       // No user is signed in, redirect to login page after a 100ms delay
-       setTimeout(() => {
-         window.location.replace('/login');
-       }, 100);
      }
    });
  </script>
