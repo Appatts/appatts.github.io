@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Auto-Chat-Scam</title>
+  </head>
+  <body>
+    <h1>Auto-Chat-Scam</h1>
+    <form id="promptForm">
+      <label for="promptInput">Nachricht auf die du antwortest:</label>
+      <input type="text" id="promptInput" name="promptInput">
+          <br/>
+      <label for="promptInput">Vorheriger Chatverlauf (falls vorhanden, sonst leer lassen):</label>
+      <input type="text" id="prechat" name="prechat">
+          <br/>
+      <button type="submit">Submit</button>
+    </form>
+    <hr>
+    <div id="responseContainer"></div>
+    <script>
+      const API_KEY = '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';
+
+      const form = document.getElementById('promptForm');
+      const responseContainer = document.getElementById('responseContainer');
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const promptInput = document.getElementById('promptInput').value;
+        const flosanswers = 'I migt not always have the time to be there for you. The goal is that you can do it on your own'
+        const prechat = document.getElementById('promptInput').value;
+        const requestData = {
+          model: 'text-davinci-003',
+          prompt: 'Antworte auf folgende Chat-nachricht:' + promptInput + '. Verwende folgende vorgefetigte Antworten als mögliche Informationen: ' + flosanswers + '. Versuche auch den folgenden vorherigen chatverlauf zu berücksichtigen und wiederholungen in deinen aussagen zu vermeiden: ' + prechat + '. Ziel der Unterhaltung sollte es sein dein gegenüber von dem nutzen des kurses zu überzeugen. Antworte auf Englisch',
+          temperature: 0.7,
+          max_tokens: 500,
+        };
+
+        fetch('https://api.openai.com/v1/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${API_KEY}`,
+          },
+          body: JSON.stringify(requestData),
+        })
+          .then(response => response.json())
+          .then(data => {
+            const responseText = data.choices[0].text;
+            responseContainer.innerHTML = `<p>API Response:</p><p>${responseText}</p>`;
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      });
+    </script>
+  </body>
+</html>
+
