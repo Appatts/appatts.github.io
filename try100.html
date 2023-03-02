@@ -4,26 +4,28 @@
     <meta charset="utf-8">
     <title>Auto-Chat-Scam</title>
   </head>
-  <body>
+  <body style="background-color: #222; color: white;">
     <h1>Auto-Chat-Scam</h1>
     <form id="promptForm">
       <label for="promptInput">Nachricht auf die du antwortest:</label>
-      <input type="text" id="promptInput" name="promptInput">
+      <input type="text" id="promptInput" name="promptInput" style="width: 60%; height 8%;">
+          <br/>
           <br/>
       <label for="promptInput">Vorheriger Chatverlauf (falls vorhanden, sonst leer lassen):</label>
-      <input type="text" id="prechat" name="prechat">
+      <input type="text" id="prechat" name="prechat" style="width: 60%; height 8%;">
           <br/>
-      <button type="submit">Submit</button>
+          <br/>
+      <button type="submit"><h2>Submit</h2></button>
     </form>
     <hr>
     <div id="responseContainer"></div>
     <script>
-      const API_KEY = [
-  'sk-WYazZ',
-  'z5qqlkQ3dyQ',
-  'qbNcT3BlbkFJtC',
-  'zQ4TlcPqQCEeKiBhgv',
-].join('');
+        const API_KEY = [
+          'sk-WYazZ',
+          'z5qqlkQ3dyQ',
+          'qbNcT3BlbkFJtC',
+          'zQ4TlcPqQCEeKiBhgv',
+        ].join('');
 
       const form = document.getElementById('promptForm');
       const responseContainer = document.getElementById('responseContainer');
@@ -60,4 +62,6 @@
     </script>
   </body>
 </html>
+
+
 
