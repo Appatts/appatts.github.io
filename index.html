@@ -1,68 +1,245 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Appatts</title>
-<link rel="stylesheet" type="text/css" href='pro.css'>
-<script src="pro.js"></script>
-</head>
-<body style="">
-    
-<form>
-   <div id="h1"  onmouseover="hovern(this)" onmouseout="offhovern(this)">Main</div>
-   <div id="h2" onmouseover="hovern(this)" onmouseout="offhovern(this)">Menu</div>
-    <div id="h3" onmouseover="hovern(this)" onmouseout="offhovern(this)"><a href="/login" style="color: white; text-decoration: none;">Log in</a></div>
- 
-    
-    <div  id="icbg"></div>
-    <!--<img src=logo.png style="width: 6%; height: 6%; top: 2px; left: 2px; ">
-    <div style="margin-top: -90px;">-->
-    
-    <div id="ic" >Appatts</div><div><img id="ic" src=logo.png style="width: 3%; height: 5%; margin-left: 3%; top: 6.5%"></div> <h1 id="ic2" >_//</h1> <div id="ic3" onmouseover="hovernbutton(this)" onmouseout="offhovernbutton(this)"><a href="/login" style="color: white; text-decoration: none;">Login</a></div></div>
- <br><!--<h1 id="title">Title</h1><!--<h3 id="title">Title</h3><br> <br> <br><div id="title1">--><img src=acf9925c-2cef-4261-8f30-2d6ebe74d990.png style="height: 100%; width: 100%;"><div style="color: white; margin-top: -42%; margin-left: 5%;"><h1>Full-Stack Development</h1><br><h3>Efficient & Secure</h3></div><!--</div>-->
-     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><button class="sellb" style="margin-left: 10%;" onclick=alert("b1") onmouseover="hovernbutton(this)" onmouseout="greenoffhovernbutton(this)">Full iOS App - Contact us</button><button class="sellb" style="margin-left: 10%;" onclick=alert("b2") onmouseover="hovernbutton(this)" onmouseout="greenoffhovernbutton(this)">Pentests - Soon</button><button class="sellb" style="margin-left: 10%;" onclick=alert("b3") onmouseover="hovernbutton(this)" onmouseout="greenoffhovernbutton(this)">ITandFriends - Soon</button><br><br><br><br><br><br><br><br><br><br><br><br><br><!-- <div style="
-  background-color: #09762F;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  top: -30%;
-  margin-left: 30%;
-">
-      Test
-     </div>--> <br> <div style="
-  background-color: #131010;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-left:7%;
-  width: 80%;
-">
-      <h1>iOS App Development with a Focus on Security</h1><br><br><img src=logo.png style="width: 40%; height: 40%; margin-left: 55%;"><br><p align="justify" style="margin-left: 2%; margin-top: -40%; width: 53%; line-height: 150%">The development of iOS applications is an ever-growing industry, providing innovative and user-friendly experiences for customers. However, with the increasing popularity of mobile devices, it is essential to prioritize cybersecurity in the development process.<br><br>We understand that it is quite a time consuming task to ensure that your applications are secure. That's why we would like to not only help you with creating visually appealing and functional iOS applications, but also implement security measurments in the developing process to prevent future cyber attacks.<br><br>When choosing Appatts for your iOS app development needs, you can rest assured that your security is in good hands. Contact us today to learn more about how we can help you bring your app to life while keeping you and your customers secure. ;)</p><br><br><br><br><br>
-     </div><br> <br> <br><br> <br> <br> <br> <br>
- <!--<div id="cont2" onmouseout="onof(this)" onload="onof(this)" onmouseover="offhovern2(this)">_//</div>-->       
-     </div>
-    
- <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
- <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amber Wilson</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Resetting default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
- <br>
- 
- <div id="end">end
- <hr id="hr">
- <br> <br> <br> <br>
- </div>
- 
-</form>
-   <!-- <script type="module" src="script.js"></script>-->
-</body>
-</html>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            margin: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 36px;
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.1);
+        }
+
+        .bio-section {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bio-text {
+            font-size: 16px;
+            opacity: 0.8;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        nav button {
+                    background-color: transparent;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 16px;
+                    padding: 10px 20px;
+                    /*margin: 0 10px;*/
+                    margin: 0 -2px;
+                    color: #333;
+                    transition: all 0.5s ease;
+                    font-weight: 700;
+                    outline: none;
+                    border-bottom: 2px solid transparent;
+                    display: inline-block; /* To center the buttons */
+                }
+
+                nav button.active {
+                    border-bottom: 2px solid #333;
+                    color: #333;
+                }
+
+                nav button:hover {
+                    color: #555;
+                }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            margin: 10px;
+            padding: 12px 24px;
+            border: 2px solid #333;
+            border-radius: 30px;
+            transition: all 0.3s ease-in-out;
+            background-color: #333;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        nav a:hover {
+            background-color: #555;
+            border-color: #555;
+        }
+
+        .teasers-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .teaser {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .teaser:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .teaser-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .teaser-text {
+            font-size: 14px;
+            opacity: 0.8;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Amber Wilson's Realm</h1>
+        <div class="profile-container">
+            <img src="dat/awprofile.png" alt="Profile Picture" class="profile-pic">
+            <div class="bio-section">
+                <div class="bio-text">
+                    - Amber Wilson✨🌸 | Själfull Vandrande.
+                    - 🇸🇪 Sweden
+                    - Tech Enthusiast
+                    - 🎨 Creative Mind & Adventure Seeker 💫
+                    - 🌟 Gaming Enthusiast & Wellness Advocate 💪💕
+                    - 🤖 Fueled by the wonders of AI
+                </div>
+            </div>
+        </div>
+    
+    <nav>
+        <a href="https://www.tiktok.com/">TikTok</a>
+        <a href="https://onlyfans.com/">OnlyFans</a>
+        <a href="https://www.instagram.com/">Instagram</a>
+    </nav>
+    </header>
+    <nav style="display: flex;
+  justify-content: center;
+  align-items: center;">
+                <button id="postsTab" class="active">Posts/Teasers</button>
+                <button id="allMediaTab">All Media</button>
+            </nav>
+        </header>
+
+        <div class="teasers-container" id="postsTeasers">
+            <!-- Teasers for Posts -->
+            <div class="teasers-container">
+                <div class="teaser">
+                    <img src="dat/4hgipson_cute_blonde_girl_with_beautyfull_face_in_a_bikini_stan_cd8fb87a-3dbb-4b55-ab61-ccf39e4d536d.png" alt="Teaser 1" style="filter: blur(0px);">
+                    <div class="teaser-title">Teaser Title 1</div>
+                    <div class="teaser-text">Brief description or preview of content 1.</div>
+                </div>
+                <div class="teaser">
+                    <img src="dat/4hgipson_cute_blonde_girl_with_beautyfull_face_in_a_bikini_stan_cd8fb87a-3dbb-4b55-ab61-ccf39e4d536d.png" alt="Teaser 2" style="filter: blur(6px);">
+                    <div class="teaser-title">Teaser Title 2</div>
+                    <div class="teaser-text">Brief description or preview of content 2.</div>
+                </div>
+                <!-- Add more teasers as needed -->
+            </div>
+            
+        </div>
+
+        <div class="teasers-container" id="allMedia" style="display: none;">
+            <!-- All Media combined -->
+            <img src="dat/4hgipson_cute_blonde_girl_with_beautyfull_face_in_a_bikini_stan_cd8fb87a-3dbb-4b55-ab61-ccf39e4d536d.png" alt="Teaser 1" style="filter: blur(0px);">
+                <img src="dat/4hgipson_cute_blonde_girl_with_beautyfull_face_in_a_bikini_stan_cd8fb87a-3dbb-4b55-ab61-ccf39e4d536d.png" alt="Teaser 1" style="filter: blur(0px);">
+                    <img src="dat/4hgipson_cute_blonde_girl_with_beautyfull_face_in_a_bikini_stan_cd8fb87a-3dbb-4b55-ab61-ccf39e4d536d.png" alt="Teaser 1" style="filter: blur(0px);">
+                        
+                    
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const postsTeasers = document.getElementById("postsTeasers");
+                const allMedia = document.getElementById("allMedia");
+                const postsTab = document.getElementById("postsTab");
+                const allMediaTab = document.getElementById("allMediaTab");
+
+                // Function to show Posts/Teasers and hide All Media
+                function showPosts() {
+                    postsTeasers.style.display = "flex";
+                    allMedia.style.display = "none";
+                    postsTab.classList.add("active");
+                    allMediaTab.classList.remove("active");
+                }
+
+                // Function to show All Media and hide Posts/Teasers
+                function showAllMedia() {
+                    postsTeasers.style.display = "none";
+                    allMedia.style.display = "flex";
+                    postsTab.classList.remove("active");
+                    allMediaTab.classList.add("active");
+                }
+
+                // Initial setup: Show Posts/Teasers by default
+                showPosts();
+
+                // Event listeners for tab clicks
+                postsTab.addEventListener("click", showPosts);
+                allMediaTab.addEventListener("click", showAllMedia);
+            });
+        </script>
+    </body>
+    </html>
