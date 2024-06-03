@@ -1,245 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amber Wilson</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Values and prioritoities for this month</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Resetting default styles */
-        * {
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f8f8f8;
-            color: #333;
-            line-height: 1.6;
+        .container {
+            max-width: 900px;
+            margin: auto;
             padding: 20px;
-            margin: 0;
         }
-
         header {
             text-align: center;
-            padding: 40px 20px;
-            background-color: #fff;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            margin-bottom: 40px;
+            padding: 50px 0;
+        }
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            color: #76c7c0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            background-color: #1f1f1f;
             border-radius: 10px;
         }
-
-        h1 {
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 36px;
-        }
-
-        .profile-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .profile-pic {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .profile-pic:hover {
-            transform: scale(1.1);
-        }
-
-        .bio-section {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .bio-text {
-            font-size: 16px;
-            opacity: 0.8;
-            color: #555;
-            line-height: 1.8;
-        }
-
-        nav button {
-                    background-color: transparent;
-                    border: none;
-                    cursor: pointer;
-                    font-size: 16px;
-                    padding: 10px 20px;
-                    /*margin: 0 10px;*/
-                    margin: 0 -2px;
-                    color: #333;
-                    transition: all 0.5s ease;
-                    font-weight: 700;
-                    outline: none;
-                    border-bottom: 2px solid transparent;
-                    display: inline-block; /* To center the buttons */
-                }
-
-                nav button.active {
-                    border-bottom: 2px solid #333;
-                    color: #333;
-                }
-
-                nav button:hover {
-                    color: #555;
-                }
-
         nav a {
+            color: #ffffff;
             text-decoration: none;
-            color: #fff;
-            font-size: 16px;
-            margin: 10px;
-            padding: 12px 24px;
-            border: 2px solid #333;
-            border-radius: 30px;
-            transition: all 0.3s ease-in-out;
-            background-color: #333;
-            display: inline-block;
-            font-weight: 700;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
         }
-
         nav a:hover {
-            background-color: #555;
-            border-color: #555;
+            background-color: #76c7c0;
+            color: #000;
         }
-
-        .teasers-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .teaser {
-            max-width: 400px;
-            background-color: #fff;
-            padding: 20px;
+        .section {
+            margin: 50px 0;
+            border: 1px solid #ffffff;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
+            padding: 20px;
+            background-color: #1f1f1f;
         }
-
-        .teaser:hover {
-            transform: translateY(-5px);
-            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        .section h2 {
+            font-size: 2.5em;
+            border-bottom: 2px solid #76c7c0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
-
-        .teaser-title {
-            font-weight: bold;
+        .section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .section i {
+            color: #76c7c0;
+            margin-right: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #ffffff;
+            margin-top: 50px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .grid-item {
+            background-color: #333333;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+        .grid-item i {
+            font-size: 2em;
             margin-bottom: 10px;
-            font-size: 18px;
-            color: #333;
-        }
-
-        .teaser-text {
-            font-size: 14px;
-            opacity: 0.8;
-            color: #555;
+            display: block;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Amber Wilson's Realm</h1>
-        <div class="profile-container">
-            <img src="awprofile.png" alt="Profile Picture" class="profile-pic">
-            <div class="bio-section">
-                <div class="bio-text">
-                    - Amber Wilson✨🌸 | Själfull Vandrande.
-                    - 🇸🇪 Sweden
-                    - Tech Enthusiast
-                    - 🎨 Creative Mind & Adventure Seeker 💫
-                    - 🌟 Gaming Enthusiast & Wellness Advocate 💪💕
-                    - 🤖 Fueled by the wonders of AI
-                </div>
-            </div>
-        </div>
-    
-    <nav>
-        <a href="https://www.tiktok.com/">TikTok</a>
-        <a href="https://onlyfans.com/">OnlyFans</a>
-        <a href="https://www.instagram.com/">Instagram</a>
-    </nav>
-    </header>
-    <nav style="display: flex;
-  justify-content: center;
-  align-items: center;">
-                <button id="postsTab" class="active">Posts/Teasers</button>
-                <button id="allMediaTab">All Media</button>
-            </nav>
+    <div class="container">
+        <header>
+            <h1>Values and prioritoities for this month</h1>
         </header>
 
-        <div class="teasers-container" id="postsTeasers">
-            <!-- Teasers for Posts -->
-            <div class="teasers-container">
-                <div class="teaser">
-                    <img src="4hgipson_cute_blonde_girl_with_beautyfull_face_in_a_bikini_stan_cd8fb87a-3dbb-4b55-ab61-ccf39e4d536d.png" alt="Teaser 1" style="filter: blur(0px);">
-                    <div class="teaser-title">Teaser Title 1</div>
-                    <div class="teaser-text">Brief description or preview of content 1.</div>
-                </div>
-                <div class="teaser">
-                    <img src="4hgipson_cute_blonde_girl_with_beautyfull_face_in_a_bikini_stan_cd8fb87a-3dbb-4b55-ab61-ccf39e4d536d.png" alt="Teaser 2" style="filter: blur(6px);">
-                    <div class="teaser-title">Teaser Title 2</div>
-                    <div class="teaser-text">Brief description or preview of content 2.</div>
-                </div>
-                <!-- Add more teasers as needed -->
-            </div>
-            
-        </div>
+        <nav>
+            <a href="#prioritaeten">Priorities</a>
+            <a href="#werte">Values</a>
+        </nav>
 
-        <div class="teasers-container" id="allMedia" style="display: none;">
-            <!-- All Media combined -->
-            <img src="4hgipson_cute_blonde_girl_with_beautyfull_face_in_a_bikini_stan_cd8fb87a-3dbb-4b55-ab61-ccf39e4d536d.png" alt="Teaser 1" style="filter: blur(0px);">
-                <img src="4hgipson_cute_blonde_girl_with_beautyfull_face_in_a_bikini_stan_cd8fb87a-3dbb-4b55-ab61-ccf39e4d536d.png" alt="Teaser 1" style="filter: blur(0px);">
-                    <img src="4hgipson_cute_blonde_girl_with_beautyfull_face_in_a_bikini_stan_cd8fb87a-3dbb-4b55-ab61-ccf39e4d536d.png" alt="Teaser 1" style="filter: blur(0px);">
-                        
+
+        <div class="section" id="prioritaeten">
+            <h2>Priorities</h2>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <i class="fas fa-chess"></i>
+                    <p>Getting 1000+ Elo in chess</p>
+                </div>
+                <div class="grid-item">
+                    <i class="fas fa-book"></i>
                     
+                    <p>Be decent in all subjects so i can solve first tasks</p>
+                </div>
+                <div class="grid-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <p>Gym (+Cardio)</p>
+                </div>
+
+                <div class="grid-item">
+                    <i class="fas fa-person"></i>
+                    <p>Meet 5 new people</p>
+                </div>
+            </div>
         </div>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const postsTeasers = document.getElementById("postsTeasers");
-                const allMedia = document.getElementById("allMedia");
-                const postsTab = document.getElementById("postsTab");
-                const allMediaTab = document.getElementById("allMediaTab");
+        <div class="section" id="werte">
+            <h2>Values</h2>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <i class="fas fa-brain"></i>
+                    <p>Be orderly - conscientious - professional - competent - strategic
+                    </p>
+                </div>
+                <div class="grid-item">
+                    <i class="fas fa-trophy"></i>
+                    <p>Winning is everything</p>
+                </div>
+                <div class="grid-item">
+                    <i class="fas fa-clock"></i>
+                    <p>Never be in a hurry</p>
+                </div>
 
-                // Function to show Posts/Teasers and hide All Media
-                function showPosts() {
-                    postsTeasers.style.display = "flex";
-                    allMedia.style.display = "none";
-                    postsTab.classList.add("active");
-                    allMediaTab.classList.remove("active");
-                }
+                <div class="grid-item">
+                    <i class="fas fa-stop"></i>
+                    <p>Prioritize your time in regards to other people</p>
+                </div>
+            </div>
+        </div>
 
-                // Function to show All Media and hide Posts/Teasers
-                function showAllMedia() {
-                    postsTeasers.style.display = "none";
-                    allMedia.style.display = "flex";
-                    postsTab.classList.remove("active");
-                    allMediaTab.classList.add("active");
-                }
-
-                // Initial setup: Show Posts/Teasers by default
-                showPosts();
-
-                // Event listeners for tab clicks
-                postsTab.addEventListener("click", showPosts);
-                allMediaTab.addEventListener("click", showAllMedia);
-            });
-        </script>
-    </body>
-    </html>
+        <footer>
+            <p>&copy; 2024</p>
+        </footer>
+    </div>
+</body>
+</html>
