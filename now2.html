@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Task</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            background: linear-gradient(135deg, #0f161f, #000000);
+            transition: background-color 0.5s;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            border: 1px solid #34495e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.5);
+        }
+        #main {
+            flex-grow: 1;
+            text-align: center;
+            padding: 40px;
+            background-color: rgba(18, 26, 34, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #task {
+            font-size: 3em;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #243444;
+            margin-top: -30%;
+        }
+        #timer {
+            font-size: 4em;
+            padding: 10px;
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            color: #0f161c;
+            font-weight: bold;
+            margin-top: 20%;
+            width: 60%;
+            margin-left: 20%;
+        }
+        #sidebar {
+            width: 350px;
+            background-color: rgba(20, 30, 41, 0.8);
+            padding: 20px;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #sidebar h2, #sidebar h3 {
+            margin: 0 0 20px 0;
+            text-align: center;
+        }
+        #date {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .task-list {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+        }
+        .task-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.0);
+        }
+        .task-list li.current {
+            background-color: #1abc9c;
+        }
+        .task-list li:hover {
+            background-color: #16a085;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="main">
+            <div id="task">No task at this time</div>
+            <div id="timer">00:00:00</div>
+        </div>
+        <div id="sidebar">
+            <h3><div id="date"></div></h3>
+            <ul id="taskList" class="task-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        const tasks = [
+            { text: "Sleeping", colorClass: "task1", start: "00:00", end: "08:00" },
+            { text: "Getting ready", colorClass: "task2", start: "08:00", end: "09:00" },
+            { text: "Bib / Learning", colorClass: "task3", start: "09:00", end: "12:00" },
+            { text: "Lunchbreak", colorClass: "task4", start: "12:00", end: "13:00" },
+            { text: "Gym", colorClass: "task3", start: "13:00", end: "15:00" },
+            { text: "Break", colorClass: "task4", start: "15:00", end: "16:00" },
+            { text: "Bib / Learning", colorClass: "task3", start: "16:00", end: "19:00" },
+            { text: "Eveningbreak", colorClass: "task4", start: "19:00", end: "20:00" },
+            { text: "Hacking", colorClass: "task3", start: "20:00", end: "23:00" },
+            { text: "Go to sleep", colorClass: "task2", start: "23:00", end: "23:59" }
+        ];
+
+        function showTask(task) {
+            const taskElement = document.getElementById('task');
+            const timerElement = document.getElementById('timer');
+            const bodyElement = document.body;
+
+            taskElement.textContent = task.text;
+            bodyElement.className = task.colorClass;
+
+            const now = new Date();
+            const [endHour, endMinute] = task.end.split(':').map(Number);
+            const endTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), endHour, endMinute);
+            updateTimeLeft(endTime);
+        }
+
+        function updateTimeLeft(endTime) {
+            const now = new Date();
+            const timeDiff = endTime - now;
+
+            if (timeDiff <= 0) {
+                document.getElementById('timer').textContent = "00:00:00";
+                location.reload();
+                return;
+            }
+
+            const hoursLeft = Math.floor(timeDiff / 3600000);
+            const minutesLeft = Math.floor((timeDiff % 3600000) / 60000);
+            const secondsLeft = Math.floor((timeDiff % 60000) / 1000);
+
+            document.getElementById('timer').textContent = 
+                `${hoursLeft.toString().padStart(2, '0')}:${minutesLeft.toString().padStart(2, '0')}:${secondsLeft.toString().padStart(2, '0')}`;
+
+            setTimeout(() => updateTimeLeft(endTime), 1000);
+        }
+
+        function checkCurrentTask() {
+            const now = new Date();
+            const currentTime = now.getHours() * 60 + now.getMinutes();
+
+            for (const task of tasks) {
+                const [startHour, startMinute] = task.start.split(':').map(Number);
+                const [endHour, endMinute] = task.end.split(':').map(Number);
+                const startTime = startHour * 60 + startMinute;
+                const endTime = endHour * 60 + endMinute;
+
+                if (currentTime >= startTime && currentTime < endTime) {
+                    showTask(task);
+                    highlightCurrentTask(task.text);
+                    return;
+                }
+            }
+
+            // If no task matches the current time, clear the task display
+            document.getElementById('task').textContent = "No task at this time";
+            document.body.className = "";
+            document.getElementById('timer').textContent = "00:00:00";
+            highlightCurrentTask(null);
+        }
+
+        function highlightCurrentTask(currentTaskText) {
+            const taskListItems = document.querySelectorAll('.task-list li');
+            taskListItems.forEach(item => {
+                if (item.textContent === currentTaskText) {
+                    item.classList.add('current');
+                } else {
+                    item.classList.remove('current');
+                }
+            });
+        }
+
+        function displayDate() {
+            const now = new Date();
+            const dateElement = document.getElementById('date');
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            dateElement.textContent = now.toLocaleDateString(undefined, options);
+        }
+
+        function displayTaskList() {
+            const taskListElement = document.getElementById('taskList');
+            taskListElement.innerHTML = ''; // Clear the current list
+
+            tasks.forEach(task => {
+                const listItem = document.createElement('li');
+                listItem.textContent = task.text;
+                taskListElement.appendChild(listItem);
+            });
+        }
+
+        setInterval(checkCurrentTask, 60000); // Check every minute
+        checkCurrentTask(); // Initial check
+        displayDate();
+        displayTaskList();
+    </script>
+</body>
+</html>
