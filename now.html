@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Task</title>
+    <style>
+        body, html {
+            height: 100%;
+            width: 100%;;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background-color: #2c3e50; /* Default background color */
+            transition: background-color 0.5s;
+        }
+        #task {
+            font-size: 5em;
+            padding: 20px;
+        }
+        #timer {
+            font-size: 2em;
+        }
+        .task1 {
+            background-color: #000000;
+        }
+        .task2 {
+            background-color: #ff563c;
+        }
+        .task3 {
+            background-color: #0aab4d;
+        }
+        .task4 {
+            background-color: #753190;
+        }
+    </style>
+</head>
+<body>
+    <div id="task">No task at this time</div>
+    <div id="timer"></div>
+
+    <script>
+        const tasks = [
+            { text: "Schlafen", colorClass: "task1", start: "00:00", end: "08:00" },
+            { text: "Aufstehen", colorClass: "task2", start: "08:00", end: "09:00" },
+            { text: "Bib", colorClass: "task3", start: "09:00", end: "12:00" },
+            { text: "Mittagspause", colorClass: "task4", start: "12:00", end: "13:00" },
+            { text: "Gym", colorClass: "task3", start: "13:00", end: "15:00" },
+            { text: "Essenspause", colorClass: "task4", start: "15:00", end: "17:00" },
+            { text: "Bib", colorClass: "task3", start: "17:00", end: "21:00" },
+            { text: "Schlafengehen", colorClass: "task2", start: "23:00", end: "23:59" }
+            
+        ];
+
+        function showTask(task) {
+            const taskElement = document.getElementById('task');
+            const timerElement = document.getElementById('timer');
+            const bodyElement = document.body;
+
+            taskElement.textContent = task.text;
+            bodyElement.className = task.colorClass;
+
+            const now = new Date();
+            const [endHour, endMinute] = task.end.split(':').map(Number);
+            const endTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), endHour, endMinute);
+            updateTimeLeft(endTime);
+        }
+
+        function updateTimeLeft(endTime) {
+            const now = new Date();
+            const timeDiff = endTime - now;
+
+            if (timeDiff <= 0) {
+                document.getElementById('timer').textContent = "Time's up!";
+                location.reload();
+                return;
+            }
+
+            const minutesLeft = Math.floor(timeDiff / 60000);
+            const secondsLeft = Math.floor((timeDiff % 60000) / 1000);
+
+            document.getElementById('timer').textContent = `Time left: ${minutesLeft}m ${secondsLeft}s`;
+
+            setTimeout(() => updateTimeLeft(endTime), 1000);
+        }
+
+        function checkCurrentTask() {
+            const now = new Date();
+            const currentTime = now.getHours() * 60 + now.getMinutes();
+            console.log(`Current time: ${now.getHours()}:${now.getMinutes()} (${currentTime} minutes)`);
+
+            for (const task of tasks) {
+                const [startHour, startMinute] = task.start.split(':').map(Number);
+                const [endHour, endMinute] = task.end.split(':').map(Number);
+                const startTime = startHour * 60 + startMinute;
+                const endTime = endHour * 60 + endMinute;
+                console.log(`Checking task: ${task.text} (start: ${task.start}, end: ${task.end}, startTime: ${startTime}, endTime: ${endTime})`);
+
+                if (currentTime >= startTime && currentTime < endTime) {
+                    showTask(task);
+                    return;
+                }
+            }
+
+            // If no task matches the current time, clear the task display
+            document.getElementById('task').textContent = "No task at this time";
+            document.body.className = "";
+            document.getElementById('timer').textContent = "";
+        }
+
+        setInterval(checkCurrentTask, 60000); // Check every minute
+        checkCurrentTask(); // Initial check
+    </script>
+</body>
+</html>
